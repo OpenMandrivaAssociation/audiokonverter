@@ -1,6 +1,6 @@
 %define name    audiokonverter
 %define pre   	%nil
-%define version 5.4.3a
+%define version 5.5.1
 %define release %mkrel 1
 
 %define iconname %{name}.png
