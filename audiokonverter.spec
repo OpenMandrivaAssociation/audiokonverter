@@ -40,8 +40,6 @@ MP3, OGG, M4A, WAV and FLAC in Konqueror by right-clicking on them.
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m755 anytowav audioconvert movie2sound %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_datadir}/mimelnk/audio/
-install -m644 x-wavpack.desktop  %{buildroot}%{_datadir}/mimelnk/audio/
 mkdir -p %{buildroot}%{_datadir}/apps/konqueror/servicemenus/
 install -m 644 audioconvert.desktop audiofrommovie.desktop %{buildroot}%{_datadir}/apps/konqueror/servicemenus/
 
@@ -52,7 +50,6 @@ rm -rf %{buildroot}
 %defattr (-,root,root)
 %doc README Changelog
 %{_bindir}/* 
-%{_datadir}/mimelnk/audio/
 %{_datadir}/apps/konqueror/servicemenus/
 
 
