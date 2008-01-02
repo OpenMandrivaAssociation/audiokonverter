@@ -14,6 +14,7 @@ License:	GPL
 Group:		Sound
 Source0:	%{name}-%{version}%{pre}.tar.bz2
 URL:		http://www.kde-apps.org/content/show.php?content=12608
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:	kdebase-progs
 Requires:	mplayer flac wavpack
 Requires:	id3lib vorbis-tools 
