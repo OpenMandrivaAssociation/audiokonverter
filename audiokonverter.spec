@@ -1,7 +1,14 @@
 %define name    audiokonverter
-%define pre   	%nil
-%define version 5.5.1
-%define release %mkrel 3
+%define pre   	beta
+%define version 5.8
+%define rel	1
+%if %pre
+%define release	%mkrel -c %pre %rel
+%define tarver	%version-%pre
+%else
+%define release	%mkrel %rel
+%define tarver	%version
+%endif
 
 %define iconname %{name}.png
 %define build_plf 0
@@ -10,21 +17,22 @@ Summary:	An audio converter
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2
 Group:		Sound
-Source0:	%{name}-%{version}%{pre}.tar.bz2
+Source0:	http://www.kde-apps.org/CONTENT/content-files/12608-%name-%tarver.tar.bz2
 URL:		http://www.kde-apps.org/content/show.php?content=12608
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Requires:	kdebase-progs
+BuildRequires:	kde4-macros
+Requires:	dolphin
 Requires:	mplayer flac wavpack
 Requires:	id3lib vorbis-tools 
 BuildArch:	noarch
 
 %if %build_plf
 %define distsuffix plf
-Requires:	lame faac faad2 
+Requires:	lame faac faad2
 %else
-Patch0:		audiokonverter-noflac.patch
+Patch0:		audiokonverter-noflac.patch 
 %endif
 
 %description 
@@ -33,16 +41,19 @@ AAC, M4A, FLAC, WMA, RealAudio, Musepack, Wavpack, WAV and movies to
 MP3, OGG, M4A, WAV and FLAC in Konqueror by right-clicking on them.
 
 %prep
-%setup -q -n %{name}-%{version}%{pre}
+%setup -q -n %{name}-%{tarver}
 %if !%build_plf
-%patch0 -p1 -b .nolame
+%patch0 -p0 -b .plf
 %endif
  
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m755 anytowav audioconvert movie2sound %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_datadir}/apps/konqueror/servicemenus/
-install -m 644 audioconvert.desktop audiofrommovie.desktop %{buildroot}%{_datadir}/apps/konqueror/servicemenus/
+rm -f %buildroot
+mkdir -p %{buildroot}%_kde_services/ServiceMenus
+install -m 644 *4.desktop %{buildroot}%_kde_services/ServiceMenus
+mkdir -p %{buildroot}%_kde_appsdir/dolphin/servicemenus
+install -m 644 *4.desktop %{buildroot}%_kde_appsdir/dolphin/servicemenus
+mkdir -p %{buildroot}%_kde_bindir
+install -m 755 anytowav audioconvert movie2sound oggdrop-lx %buildroot%_kde_bindir
 
 %clean 
 rm -rf %{buildroot}
@@ -50,7 +61,6 @@ rm -rf %{buildroot}
 %files
 %defattr (-,root,root)
 %doc README Changelog
-%{_bindir}/* 
-%{_datadir}/apps/konqueror/servicemenus/
-
-
+%_kde_bindir/*
+%_kde_services/ServiceMenus/*.desktop
+%_kde_appsdir/dolphin/servicemenus/*.desktop
