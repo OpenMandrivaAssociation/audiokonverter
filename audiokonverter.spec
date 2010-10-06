@@ -45,6 +45,10 @@ audiokonverter is a small utility to easily convert from OGG, MP3,
 AAC, M4A, FLAC, WMA, RealAudio, Musepack, Wavpack, WAV and movies to
 MP3, OGG, M4A, WAV and FLAC in Konqueror by right-clicking on them.
 
+%if %build_plf
+This package is in PLF because it requires packages that are in PLF.
+%endif
+
 %prep
 %setup -q -n %{name}-%{tarver}
 %if !%build_plf
