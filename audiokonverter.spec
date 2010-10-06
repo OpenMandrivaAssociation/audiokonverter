@@ -13,6 +13,11 @@
 %define iconname %{name}.png
 %define build_plf 0
 
+%bcond_with plf
+%if %with plf
+%define build_plf 1
+%endif
+
 Summary:	An audio converter
 Name:		%{name}
 Version:	%{version}
