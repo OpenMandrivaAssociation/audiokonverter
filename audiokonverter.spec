@@ -1,7 +1,7 @@
 %define name    audiokonverter
 %define pre   	0
 %define version 5.9
-%define rel	3
+%define rel	4
 %if %pre
 %define release	%mkrel -c %pre %rel
 %define tarver	%version-%pre
@@ -16,6 +16,7 @@
 %bcond_with plf
 %if %with plf
 %define build_plf 1
+%define distsuffix plf
 %endif
 
 Summary:	An audio converter
@@ -34,7 +35,6 @@ Requires:	id3lib vorbis-tools
 BuildArch:	noarch
 
 %if %build_plf
-%define distsuffix plf
 Requires:	lame faac faad2
 %else
 Patch0:		audiokonverter-noflac.patch 
