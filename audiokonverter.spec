@@ -62,7 +62,7 @@ install -m 644 *4.desktop %{buildroot}%_kde_services/ServiceMenus
 mkdir -p %{buildroot}%_kde_appsdir/dolphin/servicemenus
 install -m 644 *4.desktop %{buildroot}%_kde_appsdir/dolphin/servicemenus
 mkdir -p %{buildroot}%_kde_bindir
-install -m 755 anytowav audioconvert movie2sound oggdrop-lx %buildroot%_kde_bindir
+install -m 755 anytowav4 audioconvert4 movie2sound4 oggdrop-lx %buildroot%_kde_bindir
 
 %clean 
 rm -rf %{buildroot}
