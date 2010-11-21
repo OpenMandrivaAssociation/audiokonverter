@@ -1,7 +1,7 @@
 %define name    audiokonverter
 %define pre   	0
-%define version 5.9
-%define rel	5
+%define version 5.9.1
+%define rel	1
 %if %pre
 %define release	%mkrel -c %pre %rel
 %define tarver	%version-%pre
