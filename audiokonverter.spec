@@ -17,12 +17,16 @@
 %if %with plf
 %define build_plf 1
 %define distsuffix plf
+%if %mdvver >= 201100
+# make EVR of plf build higher than regular to allow update, needed with rpm5 mkrel
+%define extrarelsuffix plf
+%endif
 %endif
 
 Summary:	An audio converter
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%{release}%{?extrarelsuffix}
 License:	GPLv2
 Group:		Sound
 Source0:	http://www.kde-apps.org/CONTENT/content-files/12608-%name-%tarver.tar.bz2
