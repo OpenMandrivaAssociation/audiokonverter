@@ -1,0 +1,80 @@
+--- audioconvert4.desktop.plf	2009-11-28 20:29:18.000000000 +0100
++++ audioconvert4.desktop	2009-11-28 21:56:28.000000000 +0100
+@@ -2,7 +2,7 @@
+ Type=Service
+ ServiceTypes=KonqPopupMenu/Plugin,audio/x-wav,audio/aac,audio/x-flac,audio/x-mp3,audio/mpeg,audio/mp3,audio/vorbis,inode/directory,audio/x-ms-wma,audio/vnd.rn-realaudio,application/vnd.rn-realaudio,audio/mp4,audio/x-musepack,audio/x-wavpack,audio/x-m4a,audio/x-real-audio,audio/x-vorbis+ogg,audio/amr,audio/x-amr
+ # MimeType=audio/x-wav;audio/aac;audio/x-flac;audio/x-mp3;audio/mpeg;audio/mp3;audio/vorbis;inode/directory;audio/x-ms-wma;audio/vnd.rn-realaudio;application/vnd.rn-realaudio;audio/mp4;audio/x-musepack;audio/x-wavpack;audio/x-m4a;audio/x-real-audio
+-Actions=mp3;ogg;ipod;flac;wav
++Actions=ogg;flac;wav
+ # X-KDE-Submenu=convert to
+ # X-KDE-Submenu[de]=umwandeln in
+ # X-KDE-Submenu[nl]=zet om in
+@@ -54,11 +54,6 @@
+ Encoding=UTF8
+ 
+ 
+-[Desktop Action mp3]
+-Name=MP3
+-Icon=audio-basic
+-Exec=konsole -e audioconvert4 -t m %F
+-
+ [Desktop Action ogg]
+ Name=OGG
+ Icon=audio-basic
+@@ -74,16 +69,6 @@
+ #Icon=audio-basic
+ #Exec=konsole -e audioconvert4 -t a %F
+ 
+-[Desktop Action ipod]
+-Name=M4A for iPod (AAC)
+-Name[de]=M4A für iPod (AAC)
+-Name[nl]=M4A voor iPod (AAC)
+-Name[fr]=M4A pour iPod (AAC)
+-Name[it]=M4A per iPod (AAC)
+-Name[es]=M4A para iPod (AAC)
+-Icon=audio-basic
+-Exec=konsole -e audioconvert4 -t i %F
+-
+ [Desktop Action wav]
+ Name=WAV
+ Icon=audio-basic
+--- audiofrommovie4.desktop.plf	2009-07-07 15:24:02.000000000 +0200
++++ audiofrommovie4.desktop	2009-11-28 21:57:16.000000000 +0100
+@@ -2,7 +2,7 @@
+ Type=Service
+ ServiceTypes=KonqPopupMenu/Plugin
+ MimeType=video/avi;video/mp4;video/mpeg;video/msvideo;video/ogg;video/quicktime;video/theora;video/vnd.rn-realvideo;application/vnd.rn-realvideo;video/x-matroska;video/x-mpeg;video/x-mpeg2;video/x-ms-asf;video/x-msvideo;video/x-ms-wmv;video/x-ogg;video/x-ogm;video/x-quicktime;video/x-theora;video/x-avi;video/x-flv
+-Actions=show;dump;mp3;ogg;flac;ipod;wav
++Actions=show;dump;ogg;flac;wav
+ X-KDE-Submenu=extract audio to
+ X-KDE-Submenu[de]=Tonspur umwandeln in
+ X-KDE-Submenu[fr]=Extraire la piste audio au format...
+@@ -21,11 +21,6 @@
+ Icon=sound
+ Exec=konsole -e movie2sound4 -t d %F
+ 
+-[Desktop Action mp3]
+-Name=MP3
+-Icon=sound
+-Exec=konsole -e movie2sound4 -t m %F
+-
+ [Desktop Action ogg]
+ Name=OGG
+ Icon=sound
+@@ -41,16 +36,6 @@
+ #Icon=sound
+ #Exec=konsole -e movie2sound4 -t a %F
+ 
+-[Desktop Action ipod]
+-Name=M4A for iPod (AAC)
+-Name[de]=M4A für iPod (AAC)
+-Name[nl]=M4A voor iPod (AAC)
+-Name[fr]=M4A pour iPod (AAC)
+-Name[it]=M4A per iPod (AAC)
+-Name[es]=M4A para iPod (AAC)
+-Icon=sound
+-Exec=konsole -e movie2sound4 -t i %F
+-
+ [Desktop Action wav]
+ Name=WAV
+ Icon=sound
