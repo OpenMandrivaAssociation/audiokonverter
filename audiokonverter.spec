@@ -11,13 +11,13 @@
 
 Summary:	An audio converter
 Name:		audiokonverter
-Version:	5.9.1
-Release:	5%{?extrarelsuffix}
+Version:	6.0.0
+Release:	1%{?extrarelsuffix}
 License:	GPLv2
 Group:		Sound
-URL:		http://www.kde-apps.org/content/show.php?content=12608
-Source0:	http://www.kde-apps.org/CONTENT/content-files/12608-%{name}-%{version}.tar.bz2
-Patch0:		audiokonverter-noflac.patch
+Url:		https://store.kde.org/p/998467/
+Source0:	https://dl.opendesktop.org/api/files/download/id/1504032176/%{name}-%{version}.tar.bz2
+#Patch0:		audiokonverter-noflac.patch
 BuildRequires:	kde4-macros
 Requires:	dolphin
 Requires:	mplayer
@@ -25,8 +25,10 @@ Requires:	flac
 Requires:	wavpack
 Requires:	id3lib
 Requires:	vorbis-tools
-%if %{build_plf}
 Requires:	lame
+Requires:	flac
+Requires:	id3lib
+%if %{build_plf}
 Requires:	faac
 Requires:	faad2
 %endif
@@ -45,7 +47,7 @@ in restricted (lame, faac, faad2).
 %prep
 %setup -q
 %if !%{build_plf}
-%patch0 -p0 -b .plf
+#patch0 -p0 -b .plf
 %endif
 
 %install
