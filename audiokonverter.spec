@@ -1,67 +1,74 @@
 ######################
 # Hardcode PLF build
-%define build_plf 0
+%define	build_plf 0
 ######################
 
 %if %{build_plf}
-%define distsuffix plf
+%define	distsuffix plf
 # make EVR of plf build higher than regular to allow update, needed with rpm5 mkrel
-%define extrarelsuffix plf
+%define	extrarelsuffix plf
 %endif
 
+%define		_kde6_services	%{_datadir}/kio/servicemenus
+%define		_kde6_appsdir	%{_datadir}/apps
+
 Summary:	An audio converter
-Name:		audiokonverter
+Name:	audiokonverter
 Version:	6.0.0
-Release:	1%{?extrarelsuffix}
-License:	GPLv2
-Group:		Sound
+Release:	2%{?extrarelsuffix}
+License:	GPLv2+
+Group:	Sound
 Url:		https://store.kde.org/p/998467/
-Source0:	https://dl.opendesktop.org/api/files/download/id/1504032176/%{name}-%{version}.tar.bz2
-#Patch0:		audiokonverter-noflac.patch
-BuildRequires:	kde4-macros
-Requires:	dolphin
-Requires:	mplayer
-Requires:	flac
-Requires:	wavpack
-Requires:	id3lib
-Requires:	vorbis-tools
-Requires:	lame
-Requires:	flac
-Requires:	id3lib
+Source0:	%{name}-%{version}.tar.bz2
+Source100:	audiokonverter.rpmlintrc
+Patch0:	audiokonverter-6.0.0-drop-Encoding-from-desktop-files.patch
+#	TODO: provide apetag, musepack-tools (mpcdec) and replaygain
+# Main dep
+Requires:	plasma6-dolphin
+# Deps for various options
 %if %{build_plf}
 Requires:	faac
 Requires:	faad2
 %endif
+Requires:	flac
+Requires:	ffmpeg
+Requires:	id3lib
+Requires:	lame
+Requires:	mplayer
+Requires:	vorbis-tools
+Requires:	wavpack
+# This is in NonFree
+Recommends:	shorten
 BuildArch:	noarch
 
 %description
-audiokonverter is a small utility to easily convert from OGG, MP3,
-AAC, M4A, FLAC, WMA, RealAudio, Musepack, Wavpack, WAV and movies to
-MP3, OGG, M4A, WAV and FLAC in Konqueror by right-clicking on them.
-
+A small utility to easily convert from OGG, MP3, AAC, M4A, FLAC, WMA,
+RealAudio, Musepack, Wavpack, WAV and movies to MP3, OGG, M4A, WAV and FLAC
+in Dolphin by right-clicking on them.
 %if %{build_plf}
-This package is in restricted because it requires packages that are
-in restricted (lame, faac, faad2).
+This package is in restricted because it requires packages that are in
+restricted (faac, faad2).
 %endif
-
-%prep
-%setup -q
-%if !%{build_plf}
-#patch0 -p0 -b .plf
-%endif
-
-%install
-mkdir -p %{buildroot}%{_kde_services}/ServiceMenus
-install -m 644 *4.desktop %{buildroot}%{_kde_services}/ServiceMenus
-mkdir -p %{buildroot}%{_kde_appsdir}/dolphin/servicemenus
-install -m 644 *4.desktop %{buildroot}%{_kde_appsdir}/dolphin/servicemenus
-mkdir -p %{buildroot}%{_kde_bindir}
-install -m 755 anytowav4 audioconvert4 movie2sound4 oggdrop-lx %{buildroot}%{_kde_bindir}
 
 %files
+%license COPYING
 %doc README Changelog
-%{_kde_bindir}/*
-%{_kde_services}/ServiceMenus/*.desktop
-%{_kde_appsdir}/dolphin/servicemenus/*.desktop
+%{_bindir}/*
+%{_kde6_services}/*.desktop
+
+#-----------------------------------------------------------------------------
+
+%prep
+%autosetup -p1
 
 
+%build
+# Only scripts: nothing to do.
+
+
+%install
+mkdir -p %{buildroot}%{_kde6_services}
+install -m 755 *5.desktop %{buildroot}%{_kde6_services}
+install -m 755 Oggdrop-Lx.desktop %{buildroot}%{_kde6_services}
+mkdir -p %{buildroot}%{_bindir}
+install -m 755 anytowav5 audioconvert5 movie2sound5 oggdrop-lx %{buildroot}%{_bindir}

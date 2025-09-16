@@ -1,0 +1,55 @@
+diff -rupN audiokonverter-6.0.0.old/audioconvert5.desktop audiokonverter-6.0.0/audioconvert5.desktop
+--- audiokonverter-6.0.0.old/audioconvert5.desktop	2019-10-30 18:02:58.000000000 +0100
++++ audiokonverter-6.0.0/audioconvert5.desktop	2025-09-15 18:59:23.170432131 +0200
+@@ -51,7 +51,6 @@ X-KDE-Submenu[uk]=Перетворити
+ X-KDE-Submenu[x-test]=xxConvert Toxx
+ X-KDE-Submenu[zh_CN]=转换为
+ X-KDE-Submenu[zh_TW]=轉換為
+-Encoding=UTF8
+ 
+ 
+ [Desktop Action mp3]
+diff -rupN audiokonverter-6.0.0.old/audiofrommovie5.desktop audiokonverter-6.0.0/audiofrommovie5.desktop
+--- audiokonverter-6.0.0.old/audiofrommovie5.desktop	2019-10-30 18:02:22.000000000 +0100
++++ audiokonverter-6.0.0/audiofrommovie5.desktop	2025-09-15 18:59:36.338787256 +0200
+@@ -7,7 +7,6 @@ X-KDE-Submenu=extract audio to
+ X-KDE-Submenu[de]=Tonspur umwandeln in
+ X-KDE-Submenu[fr]=Extraire la piste audio au format...
+ X-KDE-Submenu[es]=Extraer pista de audio en...
+-Encoding=UTF8
+ 
+ [Desktop Action show]
+ Name=show properties only
+diff -rupN audiokonverter-6.0.0.old/Oggdrop-Lx.desktop audiokonverter-6.0.0/Oggdrop-Lx.desktop
+--- audiokonverter-6.0.0.old/Oggdrop-Lx.desktop	2007-12-11 19:37:20.000000000 +0100
++++ audiokonverter-6.0.0/Oggdrop-Lx.desktop	2025-09-15 19:00:17.201569290 +0200
+@@ -2,8 +2,7 @@
+ Comment=
+ Comment[de]=
+ Comment[fr]=
+-Encoding=UTF-8
+-Exec=/usr/bin/oggdrop-lx %F
++Exec=oggdrop-lx %F
+ GenericName=
+ GenericName[de]=
+ GenericName[fr]=
+diff -rupN audiokonverter-6.0.0.old/x-flv.desktop audiokonverter-6.0.0/x-flv.desktop
+--- audiokonverter-6.0.0.old/x-flv.desktop	2007-12-11 19:37:20.000000000 +0100
++++ audiokonverter-6.0.0/x-flv.desktop	2025-09-15 19:01:27.930932434 +0200
+@@ -1,7 +1,6 @@
+ [Desktop Entry]
+ Comment=Flash Video
+ Comment[es]=Video Flash
+-Encoding=UTF-8
+ Icon=video
+ MimeType=video/x-flv
+ Patterns=*.flv;*.FLV;
+diff -rupN audiokonverter-6.0.0.old/x-wavpack.desktop audiokonverter-6.0.0/x-wavpack.desktop
+--- audiokonverter-6.0.0.old/x-wavpack.desktop	2007-12-11 19:37:20.000000000 +0100
++++ audiokonverter-6.0.0/x-wavpack.desktop	2025-09-15 19:01:38.442776120 +0200
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Type=MimeType
+ MimeType=audio/x-wavpack
+ Icon=sound
