@@ -15,7 +15,7 @@
 Summary:	An audio converter
 Name:	audiokonverter
 Version:	6.0.0
-Release:	2%{?extrarelsuffix}
+Release:	3%{?extrarelsuffix}
 License:	GPLv2+
 Group:	Sound
 Url:		https://store.kde.org/p/998467/
@@ -24,8 +24,8 @@ Source100:	audiokonverter.rpmlintrc
 Patch0:	audiokonverter-6.0.0-drop-Encoding-from-desktop-files.patch
 #	TODO: provide apetag, musepack-tools (mpcdec) and replaygain
 # Main dep
-Requires:	plasma6-dolphin
-# Deps for various options
+Requires:	dolphin
+# Deps for various conversion options
 %if %{build_plf}
 Requires:	faac
 Requires:	faad2
@@ -47,7 +47,7 @@ RealAudio, Musepack, Wavpack, WAV and movies to MP3, OGG, M4A, WAV and FLAC
 in Dolphin by right-clicking on them.
 %if %{build_plf}
 This package is in restricted because it requires packages that are in
-restricted (faac, faad2).
+Restricted (faac, faad2).
 %endif
 
 %files
